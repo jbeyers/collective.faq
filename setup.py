@@ -27,7 +27,6 @@ setup(name='collective.faq',
       install_requires=[
           'setuptools',
           'plone.app.dexterity [grok]',
-          'plone.namedfile [blobs]',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
