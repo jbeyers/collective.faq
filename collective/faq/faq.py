@@ -5,6 +5,7 @@ from zope import schema
 from zope.interface import invariant, Invalid
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+from zope.component import getMultiAdapter
 
 from plone.dexterity.content import Item
 
@@ -67,4 +68,20 @@ class View(grok.View):
     grok.context(IFAQ)
     grok.require('zope2.View')
 
-    # Add view methods here
+    def answered(self):
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        effective = self.context.effective_date
+        if effective:
+            return plone.toLocalizedTime(self.context.effective_date)
+        else:
+            return u''
+
+    def answerer(self):
+        creators = self.context.creators
+        if creators:
+            return creators[0]
+        return u''
+
+    def asked(self):
+        plone = getMultiAdapter((self.context, self.request), name="plone")
+        return plone.toLocalizedTime(self.context.created())
