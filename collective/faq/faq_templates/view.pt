@@ -12,17 +12,19 @@
         <metal:main fill-slot="content-core">
         <metal:content-core define-macro="content-core">
 
+        <tal:defs tal:define="faq_view context/view">
         <div class="faq-question-wrapper">
             <div class="faq-question" tal:content="context/description">question</div>
             <div class="faq-byline" tal:condition="context/questioner|nothing">- <span tal:content="context/questioner">byline</span></div>
             <div class="faq-source" tal:condition="context/source|nothing">via <span tal:content="context/source">source</span></div>
-            <div class="faq-question-date" tal:content="view/asked|nothing">answer</div>
+            <div class="faq-question-date" tal:content="faq_view/asked|nothing">answer</div>
         </div>
         <div class="faq-answer-wrapper">
             <div class="faq-answer" tal:content="structure context/answer/output|nothing">answer</div>
-            <div class="faq-answer-person" tal:content="view/answerer|nothing">answer</div>
-            <div class="faq-answer-date" tal:content="view/answered|nothing">answer</div>
+            <div class="faq-answer-person" tal:content="faq_view/answerer|nothing">answer</div>
+            <div class="faq-answer-date" tal:content="faq_view/answered|nothing">answer</div>
         </div>
+        </tal:defs>
 
         </metal:content-core>
         </metal:main>
