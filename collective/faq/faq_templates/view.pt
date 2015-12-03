@@ -16,13 +16,29 @@
         <div class="faq-question-wrapper">
             <div class="faq-question" tal:content="context/description">question</div>
             <div class="faq-byline" tal:condition="context/questioner|nothing">- <span tal:content="context/questioner">byline</span></div>
-            <div class="faq-source" tal:condition="context/source|nothing">via <span tal:content="context/source">source</span></div>
+            <div class="faq-source" tal:condition="context/source|nothing">via
+                <span tal:condition="not:faq_view/is_source_a_link" tal:content="context/source">source</span>
+                <a tal:condition="faq_view/is_source_a_link"
+                    tal:content="context/source"
+                    tal:attributes="href context/source"
+                    >
+                    source
+                </a>
+            </div>
             <div class="faq-question-date" tal:content="faq_view/asked|nothing">answer</div>
         </div>
         <div class="faq-answer-wrapper">
             <div class="faq-answer" tal:content="structure context/answer/output|nothing">answer</div>
             <div class="faq-answer-person" tal:content="faq_view/answerer|nothing">answer</div>
             <div class="faq-answer-date" tal:content="faq_view/answered|nothing">answer</div>
+        </div>
+        <div class="faq-permalink">
+            <a
+                tal:content="context/absolute_url"
+                tal:attributes="href context/absolute_url"
+                >
+                source
+            </a>
         </div>
         </tal:defs>
 

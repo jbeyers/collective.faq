@@ -85,3 +85,9 @@ class View(grok.View):
     def asked(self):
         plone = getMultiAdapter((self.context, self.request), name="plone")
         return plone.toLocalizedTime(self.context.created())
+
+    def is_source_a_link(self):
+        source = self.context.source
+        if source and (source.startswith('http://') or source.startswith('https://')):
+            return True
+        return False
