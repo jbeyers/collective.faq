@@ -33,6 +33,7 @@
             <div class="faq-answer-date" tal:content="faq_view/answered|nothing">answer</div>
         </div>
         <div class="faq-permalink">
+            Permalink:
             <a
                 tal:content="context/absolute_url"
                 tal:attributes="href context/absolute_url"
