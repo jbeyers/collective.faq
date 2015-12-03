@@ -12,9 +12,11 @@
         <metal:main fill-slot="content-core">
         <metal:content-core define-macro="content-core">
 
-        <div class="faq-question" tal:content="context/description">question</div>
-        <div class="faq-byline" tal:condition="context/questioner|nothing">- <span tal:content="context/questioner">byline</span></div>
-        <div class="faq-source" tal:condition="context/source|nothing">via <span tal:content="context/source">source</span></div>
+        <div class="faq-question-wrapper">
+            <div class="faq-question" tal:content="context/description">question</div>
+            <div class="faq-byline" tal:condition="context/questioner|nothing">- <span tal:content="context/questioner">byline</span></div>
+            <div class="faq-source" tal:condition="context/source|nothing">via <span tal:content="context/source">source</span></div>
+        </div>
         <div class="faq-answer" tal:content="structure context/answer/output|nothing">answer</div>
 
         </metal:content-core>
