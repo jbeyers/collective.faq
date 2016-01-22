@@ -91,3 +91,10 @@ class View(grok.View):
         if source and (source.startswith('http://') or source.startswith('https://')):
             return True
         return False
+
+    def get_recipients(self):
+        """collective.contentrules.mailfromfield chokes on a None value in email. Get around that.
+        """
+        if not self.email:
+            return []
+        return self.email
